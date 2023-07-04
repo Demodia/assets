@@ -80,10 +80,8 @@ export default function debugWithColor(messages, colors, { ENABLE = false, THEME
   }
 
   const colorTheme = LOG_COLOR.get(THEME.toUpperCase());
-  if (!colorTheme) {
-    console.warn(`debugWithColor: Invalid theme "${THEME}".`);
-    return [];
-  }
+
+  if (!colorTheme) throw new Error(`debugWithColor: Invalid theme "${THEME}".`);
 
   const formattedMessages = [`%c${LOCATION}`];
   const formattedColors = [`color: ${colorTheme['VIOLET']}`];
